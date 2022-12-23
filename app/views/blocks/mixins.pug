@@ -1,0 +1,132 @@
+//- mixin ListItem(title="This is default title", caption)
+//- 	li.list-item
+//- 		h2.list-title= title
+//- 		if caption
+//- 			span.list-caption= caption
+//- 		if block
+//- 			block
+
+mixin menuLink(href="#", title)
+	li.header-menu-item
+		a.header-menu-link(href= href)= title
+
+mixin headerBottomItem(number, title)
+	.header-bottom-item
+		span.header-bottom-number= number
+		span.header-bottom-text= title
+
+mixin blockBox(caption, title, desc)
+	.block-box 
+		h3.block-box-caption= caption
+		h2.block-box-heading= title 
+		if desc
+			p.block-box-desc= desc
+
+mixin aboutItem(src, title, iconClass="about-icon", alt="")
+	.about-item 
+		img.about-image(src= src, alt= alt)
+		.about-content
+			i.fa.fa-users(class= iconClass)
+			span.about-title= title
+
+mixin numberItem(count, text)
+	.number-item 
+		h4.number-item-count= count
+		span.number-item-text= text
+
+mixin serviceItem(src, title, desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui asperiores eius facilis.")
+	.service-item
+		img.service-item-icon(src= src) 
+		.service-item-info 
+			h3.service-item-title= title
+			p.service-item-desc= desc
+
+mixin wedoItem(src, title, active="", angle="", desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet unde porro, dolorum, eius blanditiis esse pariatur vitae perspiciatis maxime, placeat qui ullam officiis consequuntur quas quae minima ipsa. Assumenda, incidunt! Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium reiciendis, labore magnam corrupti adipisci quae id? Expedita deserunt, corporis eaque ab officia aperiam voluptatum, autem consequuntur modi est libero dignissimos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus non consectetur doloribus libero at adipisci necessitatibus enim quo? Vel dignissimos quo voluptatibus officiis, voluptate id molestias fuga unde voluptatum repellat.")
+	.wedo-item(class= active)
+		.wedo-item-header 
+			img(src= src).wedo-item-icon
+			h3.wedo-item-title= title 
+			i.fal.wedo-item-arrow(class= angle)
+		.wedo-item-content
+			.wedo-item-text= desc
+
+mixin teamSocial(facebook="#", twitter="#", pinterest="#", instagram="#") 
+	ul.team-social 
+		li.team-social-item 
+			a.team-social-link(href= facebook)
+				i.fab.fa-facebook-f
+		li.team-social-item 
+			a.team-social-link(href= twitter)
+				i.fab.fa-twitter
+		li.team-social-item 
+			a.team-social-link(href= pinterest)
+				i.fab.fa-pinterest
+		li.team-social-item 
+			a.team-social-link(href= instagram)
+				i.fab.fa-instagram
+
+mixin teamItem(src, name, position)
+	.team-item 
+		.team-main 
+			img(src= src).team-image
+			.team-content 
+				if block
+					block
+		.team-info 
+			h3.team-name= name
+			span.team-position= position
+
+mixin workItem(src, full="", title="Creatively designed", desc="Lorem ipsum dolor sit.")
+	.work-item(class= full)
+		img.work-image(src= src)
+		.work-content 
+			i.fa.fa-home.work-icon
+			h3.work-title= title
+			span.work-desc.text.text--light= desc
+
+mixin peopleItem(src, name, job="Graphic design", desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi iure animi tempore. Aliquid nihil quos ea illum harum totam, culpa quaerat aperiam repellendus animi ratione, debitis deserunt ad voluptatem doloribus.")
+	li.people-item 
+		img.people-avatar(src= src)
+		.people-info
+			h3.people-name= name
+			span.people-job.text.text--light= job
+			p.people-desc.text= desc
+
+
+mixin storyMediaItem(src, day, month)
+	.story-media 
+		img.story-image(src= src)
+		.story-date 
+			span.story-date-number= day
+			span.story-date-text.text.text--light= month
+		
+mixin storyTitleItem(title="Lorem ipsum dolor sit amet.", desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde molestiae ipsam saepe. Error quibusdam in laudantium adipisci. Aut tempora vero saepe fugiat officia fugit fuga obcaecati deserunt est laudantium?")
+	h3.story-title= title
+	.story-desc.text
+		p.story-desc-inner.text= desc
+
+mixin storyMetaItem(num1, num2)
+	.story-meta 
+		.story-meta-item 
+			i.fa.fa-eye.story-meta-icon 
+			span.story-meta-number.text= num1
+		.story-meta-item 
+			i.fa.fa-comment.story-meta-icon 
+			span.story-meta-number.text= num2
+
+mixin storyItem(src, day, month, num1, num2, title, desc)
+	li.story-item 
+		+storyMediaItem(src, day, month)
+		+storyTitleItem(title, desc)
+		+storyMetaItem(num1, num2)
+
+mixin quoteItem(image= false, src="../../images/img-quote.png", desc="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis alias in provident harum, adipisci cum reiciendis eum. Pariatur, at et error officiis a quam eos nam molestiae, quaerat cumque vero.", author="Jon Doe")
+	.quote-item 
+		if image == false 
+			.quote-icon 
+				img(src= src)
+		else 
+			img(src= src).quote-image 
+		.quote-info 
+			p.quote-desc= desc
+			span.quote-author= author
